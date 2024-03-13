@@ -1,0 +1,52 @@
+<h2 class="mb-5">
+  @if (emp) {
+    Editar
+  } @else {
+    Nuevo
+  }
+   empleado
+</h2>
+
+<div class="row row-cols-3 justify-content-center">
+  @if (form) {
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="string" class="form-control" id="name" formControlName="name" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="birthday" class="form-label">fecha de nacimiento</label>
+        <input type="date" id="birthday" formControlName="birthday" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="age" class="form-label">Edad</label>
+        <input type="number" id="age"  min="18" max="80" formControlName="age" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="charge" class="form-label">Cargo:</label>
+        <select id="charge" class="form-select" formControlName="charge">
+          <option value="1">Gerente</option>
+          <option value="2">Coordinador</option>
+          <option value="3">Subdirectior</option>
+        </select>
+      </div>
+  
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="status" formControlName="status"/>
+        <label class="form-check-label" for="status">Estatus</label>
+      </div>
+  
+      <div class="text-end">
+        <button type="button" class="btn btn-light" routerLink="/">Cancelar</button>
+  
+        <button type="submit" class="btn btn-primary" style="margin: 0 0 0 1rem;">
+          @if (emp) {Editar} @else {Crear}
+        </button>
+      </div>
+  
+    </form>
+  }
+</div>

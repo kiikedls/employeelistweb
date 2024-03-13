@@ -1,0 +1,43 @@
+<h2 class="mb-5 py-5">Empleados</h2>
+
+<div class="text-end">
+    <button class="btn btn-primary" routerLink="/new" >
+        Nuevo Empleado
+    </button>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha de nacimiento</th>
+            <th>Edad</th>
+            <th>Cargo</th>
+            <th>Estatus</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (employee of employees; track employee.id) {
+            <tr>
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.birthday | date:'dd/MM/yyyy'}}</td>
+                <td>{{employee.age}}</td>
+                <td>{{employee.charge}}</td>
+                <td>{{employee.status}}</td>
+                <td class="text-end">
+                    <div class="btn-group">
+                        <button class="btn btn-warning" [routerLink]="[employee.id,'edit']">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteEmployee(employee)">
+                            Borrar
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
